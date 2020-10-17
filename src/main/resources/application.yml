@@ -1,0 +1,9 @@
+custom-feign:
+  client:
+    default:
+      max-connections: 10
+      max-connections-per-route: 2
+    jsonplaceholder:
+      max-connections: 20
+  dummyRestApiExampleEndPoint: http://dummy.restapiexample.com/api/v1/employees
+  jsonPlaceHolderEndPoint: http://jsonplaceholder.typicode.com
