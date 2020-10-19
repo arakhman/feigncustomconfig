@@ -2,8 +2,10 @@ package com.arakhman.ptbc.feignconfigexample.utils;
 
 import com.arakhman.ptbc.feignconfigexample.config.Config;
 import feign.Feign;
+import feign.Logger;
 import feign.httpclient.ApacheHttpClient;
 import feign.jackson.JacksonDecoder;
+import feign.slf4j.Slf4jLogger;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +39,11 @@ public class CustomFeignBuilder {
             }
         }
 
-        return Feign.builder().client(new ApacheHttpClient(clientBuilder.build()))
-                .decoder(new JacksonDecoder());
+        Feign.Builder builder = Feign.builder()
+                .client(new ApacheHttpClient(clientBuilder.build()))
+                .decoder(new JacksonDecoder())
+                .logger(new Slf4jLogger())
+                .logLevel(Logger.Level.BASIC);
+        return builder;
     }
 }

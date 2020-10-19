@@ -7,3 +7,7 @@ custom-feign:
       max-connections: 20
   dummyRestApiExampleEndPoint: http://dummy.restapiexample.com/api/v1/employees
   jsonPlaceHolderEndPoint: http://jsonplaceholder.typicode.com
+
+logging:
+  level:
+    feign: debug
